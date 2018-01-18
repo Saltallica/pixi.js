@@ -3,9 +3,17 @@ import settings from './settings';
 
 function checkPrecision(src, def)
 {
+    
+    //console.log(src);
+
+    if (src.includes('precision')) {
+        return src;
+    }
+
     if (src instanceof Array)
     {
-        if (src[0].substring(0, 9) !== 'precision')
+        
+        if (src[0].substring(0, 9) !== 'precision' || !src[1].includes('precision'))
         {
             const copy = src.slice(0);
 
