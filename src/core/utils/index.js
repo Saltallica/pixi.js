@@ -10,6 +10,8 @@ import mapPremultipliedBlendModes from './mapPremultipliedBlendModes';
 let nextUid = 0;
 let saidHello = false;
 
+export const webGlVersion = "webgl2";
+
 /**
  * Generalized convenience utilities for PIXI.
  * @example
@@ -263,7 +265,7 @@ export function sayHello(type)
     if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1)
     {
         const args = [
-            `\n %c %c %c PixiJS ${VERSION} - ✰ ${type} ✰  %c  %c  http://www.pixijs.com/  %c %c ♥%c♥%c♥ \n\n`,
+            `\n %c %c %c PixiJS ${VERSION} - ✰ ${type} (${webGlVersion}) ✰  %c  %c  http://www.pixijs.com/  %c %c ♥%c♥%c♥ \n\n`,
             'background: #ff66a5; padding:5px 0;',
             'background: #ff66a5; padding:5px 0;',
             'color: #ff66a5; background: #030307; padding:5px 0;',
@@ -304,7 +306,7 @@ export function isWebGLSupported()
         }
 
         const canvas = document.createElement('canvas');
-        let gl = canvas.getContext('webgl', contextOptions) || canvas.getContext('experimental-webgl', contextOptions);
+        let gl = canvas.getContext(webGlVersion, contextOptions) || canvas.getContext('experimental-webgl', contextOptions);
 
         const success = !!(gl && gl.getContextAttributes().stencil);
 
